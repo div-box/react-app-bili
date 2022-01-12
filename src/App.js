@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-
+import './App.less';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import routes from './router';
+import { withRouter } from '@/utils'
 function App() {
+  const renderRouter = (routes) => {
+    return routes.map((item) => {
+      if (!item.routes) {
+        let TheComponent = withRouter(item.component)
+        return (
+          <Route
+            exact
+            key={item.path}
+            path={item.path}
+            element={<TheComponent />}
+          ></Route>
+        )
+      } else {
+        return renderRouter(item.routes)
+      }
+    })
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload111.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Routes>{renderRouter(routes)}</Routes>
+    </Router>
+  )
 }
 
 export default App;
