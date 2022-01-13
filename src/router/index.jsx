@@ -3,15 +3,15 @@ import Home from "@/pages/home"
 import Login from "@/pages/login"
 
 const routes = [
-  {
-    name: "用户",
-    path: "/",
-    icon: "icon-shouye",
-    component: Admin
-  },
+  // {
+  //   name: "用户",
+  //   path: "/",
+  //   icon: "icon-shouye",
+  //   component: Admin
+  // },
   {
     name: "首页",
-    path: "/home",
+    path: "/",
     icon: "icon-shouye",
     component: Home
   },
