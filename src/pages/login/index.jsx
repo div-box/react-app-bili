@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import styles from "./index.module.less";
 import logo from "@/assets/images/logo.png";
-import { Form, Input, Button, Row, Col } from "antd";
+import { Form, Input, Button, Row, Col, message } from "antd";
 import FormItem from "antd/lib/form/FormItem";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-export default class Login extends Component {
+import { reqLogin } from "@/api";
+import { saveUser } from "@/utils/storageUtils";
+import { withRouter } from "@/utils";
+class Login extends Component {
   constructor(props) {
     super(props);
     this.formRef = React.createRef();
@@ -12,8 +15,25 @@ export default class Login extends Component {
   }
 
   submit = async () => {
-    const res = await this.formRef.current.validateFields();
-    console.log("res", res);
+    const data = await this.formRef.current.validateFields();
+    const res = await reqLogin(data);
+    if (res.status === 0) {
+      message.success("登陆成功");
+      //保存user
+      saveUser(res.data);
+      this.props.router.navigate("/");
+    } else {
+      message.error(res.msg);
+    }
+  };
+  //密码自定义验证
+  validatorPwd = (rules, value, callback) => {
+    if (!value) callback("密码必须输入");
+    else if (value.length < 4) callback("密码不能小于4位");
+    else if (value.length > 12) callback("密码不能大于12位");
+    else if (!/^[a-zA-z0-9_]+$/.test(value))
+      callback("密码只能是英文数字或者下划线");
+    else callback();
   };
 
   render() {
@@ -38,7 +58,7 @@ export default class Login extends Component {
                   <Col span={24}>
                     <Form.Item
                       // label="用户名"
-                      name="userName"
+                      name="username"
                       rules={[
                         {
                           required: true,
@@ -67,8 +87,7 @@ export default class Login extends Component {
                       name="password"
                       rules={[
                         {
-                          required: true,
-                          message: "密码不能为空",
+                          validator: this.validatorPwd,
                         },
                       ]}
                     >
@@ -98,3 +117,4 @@ export default class Login extends Component {
     );
   }
 }
+export default withRouter(Login);
