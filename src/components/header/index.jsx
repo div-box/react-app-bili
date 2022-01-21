@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import "./index.less";
 import { getUser, removeUser } from "@/utils/storageUtils";
 import logo from "@/assets/images/logo.png";
-import { reqWeather } from "@/api";
 import { withRouter } from "@/utils";
 import moment from "moment";
-import routes from "@/router";
+import {routes} from "@/router";
 import { Popconfirm, Button } from "antd";
 class Header extends Component {
   constructor(props) {
@@ -68,7 +67,7 @@ class Header extends Component {
     clearInterval(this.time);
   }
   render() {
-    const { timeData, dayPictureUrl, weather } = this.state;
+    const { timeData } = this.state;
     const user = getUser();
     return (
       <header className="header">

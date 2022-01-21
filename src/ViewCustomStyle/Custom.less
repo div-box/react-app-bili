@@ -1,0 +1,283 @@
+// 自定义的样式
+
+// 项目名称 导航上面项目名称字体样式
+.projectTitle {
+  position: absolute;
+  z-index: 100;
+  width: 220px;
+  height: 45px;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 45px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.projectTitles {
+  height: 45px;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 45px;
+  text-align: center;
+  cursor: pointer;
+}
+
+
+// 主内容部分  自定义自路由出口  容器样式
+.main {
+  // 通用部分
+  height: calc(100vh - 66px);
+  padding: 10px;
+  overflow: auto;
+  background: #EBEFF8;
+
+  // border-radius: 4px;
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    background-image: inherit;
+    -webkit-text-fill-color: #000;
+    -webkit-box-shadow: 0 0 0 1000px #fff inset;
+    box-shadow: 0 0 0 1000px #fff inset;
+  }
+
+  input[disabled]:-webkit-autofill,
+  textarea[disabled]:-webkit-autofill,
+  select[disabled]:-webkit-autofill {
+    background-image: inherit;
+    -webkit-text-fill-color: #000;
+    -webkit-box-shadow: 0 0 0 1000px #fff inset;
+    box-shadow: 0 0 0 1000px #f5f5f5 inset;
+  }
+}
+
+// .main > div{
+//   // height: calc(100vh - 56px);
+// }
+
+.mainHome {
+  // 针对首页部分
+  height: calc(100vh - 55px);
+  overflow: auto;
+  margin: -24px;
+
+  input:-internal-autofill-selected {
+    background-color: rgb(255, 255, 255) !important;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    background-color: #d2d0d3;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #aaaaa8;
+    border-radius: 5px;
+  }
+}
+
+.main::-webkit-scrollbar {
+  width: 6px;
+  background-color: #d2d0d3;
+}
+
+.main::-webkit-scrollbar-thumb {
+  background-color: #aaaaa8;
+  border-radius: 5px;
+}
+
+
+// 公共白背景
+.publicBackground {
+  position: relative;
+  background-color: #fff;
+  padding: 10px;
+}
+
+
+//flex盒子
+.flexBetweenBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+//公共查询和重置按钮之间的间距
+.searchButtonMargin {
+  margin-right: 16px;
+}
+
+.marginBottom20 {
+  margin-bottom: 20px;
+}
+
+.marginTop10 {
+  margin-bottom: 10px;
+}
+
+.textRight {
+  text-align: right;
+}
+
+// 分页
+.paginationContainer {
+  margin-top: 20px;
+  text-align: right;
+}
+
+// 新增编辑弹窗的标题
+.ModalTitle {
+  height: 40px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  color: #555;
+  font-weight: bold;
+  line-height: 40px;
+  background-color: #F5F6FA;
+  border-radius: 4px;
+}
+
+.groupingTitle {
+  height: 40px;
+  padding-left: 10px;
+  line-height: 40px;
+  background-color: #f5f6fa;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  font-weight: 500;
+  color: #555;
+}
+
+
+.operationSpan {
+  color: #0092ff;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.padding20 {
+  padding: 20px 0;
+}
+
+.padding10 {
+  padding: 10px 0;
+}
+
+.paddingLeft20 {
+  padding-left: 20px;
+}
+
+.modalItemTitle {
+  color: #555;
+  background-color: #F5F6FA;
+}
+
+.NumberInp {
+  width: 100% !important;
+}
+
+.marginBottom10 {
+  margin-bottom: 10px;
+}
+
+.earlyWarning {
+  color: #FF8900;
+}
+
+.giveAnAlarm {
+  color: rgba(238, 0, 0, 1);
+}
+
+.customModalTitle {
+  margin-bottom: 20px;
+  padding: 6px 0 6px 10px;
+  background-color: #F3F6F9;
+}
+
+.marT10 {
+  margin-top: 20px;
+}
+
+
+.OnFormBox {
+  position: relative;
+  height: 42px;
+  background-color: #fff;
+  padding: 5px 0 5px 10px;
+  margin: 8px 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 33%;
+    left: 0;
+    height: 18px;
+    width: 4px;
+    background-color: #0092FF;
+  }
+
+  .ant-form-item-label {
+    margin-left: 8px;
+  }
+}
+
+.headtitle {
+  border-bottom: 2px solid #eee;
+  padding: 10px 0 10px 10px;
+  color: #222;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.marbox {
+  width: 100%;
+}
+
+// 文件上传等待样式
+.fileSpin {
+  position: absolute !important;
+  top: 40%;
+  left: 45%;
+  z-index: 100;
+}
+
+.Font14 {
+  font-size: 14px;
+}
+
+// 查询统计的翻页组件
+.CXTJPagination {
+  text-align: right;
+}
+
+// 大屏模块顶部
+.TitleBoxHealth {
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(270deg, rgba(23, 178, 255, 0) 0%, rgba(23, 178, 255, 0.3) 52%, rgba(23, 178, 255, 0) 100%);
+  text-align: center;
+  line-height: 40px;
+  font-size: 16px;
+}
+
+// 大屏进度条  改背景色
+.DProgress {
+  .ant-progress-inner {
+    background-color: #133558;
+  }
+}
+
+.editable-row {
+  background: #F5F5F5;
+
+  &:hover {
+    background: #F5F5F5 !important;
+  }
+}
+
+.passInput {
+  input {
+    font-size: 12px !important;
+  }
+}

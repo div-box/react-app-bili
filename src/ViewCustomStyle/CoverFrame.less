@@ -1,0 +1,768 @@
+// 覆盖框架的样式
+
+// @layout_header_color: linear-gradient(90deg, #008FE8 0%, #024A99 100%); // 顶部颜色
+@layout_header_color: linear-gradient(90deg, #008FE8, #024A99); // 顶部颜色
+
+@layout_header_height: 54px; // 顶部高度
+
+@layout_basicLayout_backColor: #09132E; // 右侧section 整体背景色 #edf5fb
+
+
+@Table_Border_Color: #EEEEEE; // 表格边框颜色
+@Table_HoverColor: rgba(38, 102, 251, 0.06); // 表格hover时的颜色
+@Table_body_color: #555555; // 表格内容部分 文字颜色
+@Table_head_backColor: #D8E0F1; // 表格顶部 title 背景颜色
+
+@layout_menu_color: #ffffff; // 菜单文字颜色
+@layout_menu_backgroundColor: #1C2340; // 菜单背景颜色
+@layout_menu_selectColor: #1890FF; // 选中的颜色
+
+// 输入框
+.ant-input[disabled] {
+  // 不可输入状态样式修改
+  cursor: auto !important;
+  color: #000 !important;
+  // background-color: #fff !important;
+}
+
+
+// 总体布局部分~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ant-modal {
+
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    background-image: inherit;
+    -webkit-text-fill-color: #000 !important;
+    caret-color: #000 !important;
+  }
+}
+
+// 修改整体背景
+.ant-pro-basicLayout > section > section {
+  background-color: @layout_basicLayout_backColor;
+}
+
+// 面包屑
+.ant-page-header.has-breadcrumb {
+  padding: 5px 20px !important;
+  background-color: #EBEFF8;
+
+  // padding-top: 16px !important;
+  .ant-breadcrumb {
+    font-size: 14px !important;
+  }
+}
+
+.ant-pro-top-nav-header-menu .ant-menu.ant-menu-horizontal {
+  display: none;
+}
+
+.ant-pro-basicLayout .ant-layout-header:not(.ant-pro-top-menu) {
+  display: none;
+}
+
+.ant-pro-basicLayout-content .ant-pro-page-header-wrap {
+  margin: -24px -0 0 !important;
+}
+
+// 主内容部分  内外边距
+section {
+  &:nth-child(2) {
+
+    // padding-left: 200px !important;
+    .ant-pro-basicLayout-content {
+      margin: 0px !important;
+      // margin-top: 24px;
+    }
+
+    .ant-pro-page-header-wrap-children-content {
+      // margin: 12px 24px !important;
+      margin: 0 !important;
+    }
+
+
+  }
+}
+
+.ant-layout.ant-layout-has-sider > .ant-layout,
+.ant-layout.ant-layout-has-sider > .ant-layout-content {
+  overflow-x: unset !important;
+}
+
+
+// 顶部 布局部分~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ant-layout-header {
+  // 顶部的颜色
+  height: @layout_header_height !important;
+  color: #fff !important;
+  background: @layout_header_color !important;
+}
+
+.ant-pro-top-nav-header {
+  // 顶部高度
+  height: @layout_header_height !important;
+}
+
+.ant-pro-top-nav-header-main {
+  // 顶部高度  和  左上logo的侧间距
+  height: @layout_header_height !important;
+  padding-left: 0px !important;
+}
+
+.ant-pro-top-nav-header-logo h1 {
+  // 左上 大标题样式
+  color: rgba(238, 238, 238, 1) !important;
+  font-weight: 550 !important;
+  font-size: 24px !important;
+  height: @layout_header_height !important;
+  line-height: @layout_header_height !important;
+}
+
+.ant-pro-top-nav-header-logo {
+  // logo 容器的高度
+  height: @layout_header_height !important;
+}
+
+// 左侧菜单位置调整  --   为项目名称标题留出顶部空间
+.ant-layout-sider-children {
+  background-color: @layout_menu_backgroundColor;
+
+  .ant-menu {
+    padding: 0 !important;
+  }
+
+  .ant-menu-sub.ant-menu-inline {
+    background-color: @layout_menu_backgroundColor;
+  }
+
+  // 左侧菜单里的文字 两侧对齐
+  ul {
+    background-color: @layout_menu_backgroundColor;
+
+    li {
+
+      a {
+        span:nth-child(2) {
+          display: inline-block;
+          width: 65px;
+          text-align: justify;
+          text-align-last: justify;
+          // color: @layout_menu_color;
+        }
+      }
+    }
+
+    li {
+      div {
+        span {
+          span:nth-child(2) {
+            color: @layout_menu_color;
+          }
+        }
+      }
+
+      a {
+        span {
+          color: @layout_menu_color;
+        }
+      }
+    }
+
+    // 选中的颜色
+    .ant-menu-item-selected {
+      background-color: @layout_menu_selectColor !important;
+    }
+  }
+}
+
+// 菜单右侧箭头颜色
+.ant-menu-submenu-inline > .ant-menu-submenu-title .ant-menu-submenu-arrow::after {
+  color: @layout_menu_color !important;
+  background-image: unset !important;
+}
+
+.ant-menu-submenu-inline > .ant-menu-submenu-title .ant-menu-submenu-arrow::before {
+  color: @layout_menu_color !important;
+  background-image: unset !important;
+}
+
+// 消除因light 文件造成的下方容器高度缺陷问题
+.ant-pro-basicLayout .ant-pro-basicLayout-has-header .ant-pro-basicLayout-is-children.ant-pro-basicLayout-fix-siderbar {
+  height: calc(100vh - @layout_header_height) !important;
+}
+
+
+// 左侧菜单滚动条优化
+.ant-layout-sider::-webkit-scrollbar {
+  width: 6px;
+  background-color: #d2d0d3;
+}
+
+.ant-layout-sider::-webkit-scrollbar-thumb {
+  background-color: #aaaaa8;
+  border-radius: 5px;
+}
+
+
+// 表单按钮 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.formButton {
+
+  //text-align: right;
+  .ant-btn {
+    margin-right: 10px !important;
+  }
+
+  .ant-btn-primary {
+    margin-right: 10px !important;
+    margin-left: 10px !important;
+  }
+}
+
+
+//表格操作样式
+.tableOperationStyle {
+  cursor: pointer;
+  color: #1a5faa;
+}
+
+.editRow {
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+  border: 1px solid lightgray;
+}
+
+// 修改表格 边框 样式
+.TKtables {
+
+  .TableBtn {
+    color: #35b2ff;
+    cursor: pointer;
+  }
+
+  table {
+    border: 0px @Table_Border_Color solid;
+    border-right: 0 @Table_Border_Color solid;
+    border-radius: 0;
+  }
+
+  .ant-table-tbody {
+    border-radius: 0;
+
+    .ant-table-row {
+
+      // 表格内容部分
+      td {
+        // border-top: 1px @Table_Border_Color solid;
+        // border-right: 1px @Table_Border_Color solid !important;
+        text-align: center !important;
+        font-size: 16px !important; // 表格 内容部分  文字大小
+        // border: none !important;
+      }
+
+      .ant-table-cell-fix-right {
+        border-left: 1px @Table_Border_Color solid !important;
+      }
+    }
+
+    .ant-table-placeholder {
+      td {
+        border-top: 0px @Table_Border_Color solid !important;
+        border-right: 1px @Table_Border_Color solid !important;
+      }
+    }
+  }
+
+  .ant-table-thead {
+    border-radius: 0;
+
+    tr {
+      th {
+        border-right: 1px @Table_Border_Color solid !important;
+        text-align: center !important;
+        border-radius: 0 !important;
+        border-bottom: 0px @Table_Border_Color solid !important;
+      }
+
+      .ant-table-cell-fix-right {
+        border-left: 1px @Table_Border_Color solid !important;
+      }
+    }
+
+    // 判断只有一行的情况
+    tr:nth-last-child(1):first-child {
+      th[colspan] {
+        border-radius: 0;
+        border-bottom: 0px @Table_Border_Color solid !important;
+      }
+    }
+
+    // 判断有两行的情况
+    tr:nth-last-child(2):first-child {
+      th[colspan] {
+        border-radius: 0;
+        border-bottom: 0px @Table_Border_Color solid !important;
+      }
+
+      .ant-table-cell:not([rowspan]) {
+        border-radius: 0;
+        border-bottom: 0px @Table_Border_Color solid !important;
+      }
+    }
+  }
+
+  //翻页器上下padding
+  .ant-pagination {
+    margin: 10px 0 !important;
+  }
+}
+
+// 表格行高
+.ant-table-thead > tr > th,
+.ant-table-tbody > .ant-table-row > td,
+.ant-table tfoot > tr > th,
+.ant-table tfoot > tr > td {
+  padding: 8px 8px !important;
+}
+
+// 表格样式修改
+.ant-table-thead {
+  tr {
+    th {
+      background: @Table_head_backColor !important; // 表格头部 方框背景颜色
+    }
+  }
+}
+
+.ant-table-column-sort {
+  background: none !important;
+}
+
+.ant-pro-page-container-warp {
+  background: #EBEFF8 !important;
+}
+
+// 表格 隔行变色
+.light-row {
+  background: #fff;
+  cursor: pointer;
+
+  &:hover {
+    background: #DAE9FA !important;
+
+    .listName {
+      text-decoration: underline;
+      color: #0092FF;
+    }
+  }
+}
+
+.dark-row {
+  cursor: pointer;
+  background: #EBEFF8;
+
+  &:hover {
+    background: #DAE9FA !important;
+
+    .listName {
+      text-decoration: underline;
+      color: #0092FF;
+    }
+  }
+}
+
+//表格在鼠标悬浮时背景色
+.ant-table-tbody > tr > td {
+  // background: transparent !important;
+  color: @Table_body_color !important;
+  // border: none !important;
+}
+
+// hover 的颜色
+.ant-table-tbody > tr:hover > td {
+  background: transparent !important; // 设置为透明hover的颜色  才能生效
+}
+
+.ant-table-tbody > tr:hover > .ant-table-cell-fix-right {
+  background: #fff !important;
+}
+
+.ant-table-tbody > tr:hover > .ant-table-cell-fix-left {
+  background: #fff !important;
+}
+
+.ant-table-tbody > tr:hover {
+  background: @Table_HoverColor;
+}
+
+
+// tab切换样式修改~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.tlgcs {
+  .ant-tabs-tab {
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
+    margin-right: 10px !important;
+    padding: 5px 16px !important;
+    min-width: 95px !important;
+    background: none !important;
+
+    div {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .ant-tabs-tab-active {
+    color: #fff !important;
+    background: #004AE3 !important;
+    border-bottom-color: #004AE3 !important;
+
+    div {
+      color: #fff !important;
+      text-align: center !important;
+    }
+  }
+
+  .ant-tabs-nav {
+    border-bottom: #004AE3 3px solid !important;
+    margin: 0 0 5px 0 !important;
+  }
+}
+
+.ant-tabs-nav {
+  margin: 0 0 5px 0 !important;
+}
+
+.align-c {
+  text-align: center;
+}
+
+
+// 弹窗样式~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~模态框~~~~~~~~~~~~~~~~~~~~~~~~~
+.ant-modal {
+  top: 5% !important;
+  z-index: 150;
+}
+
+.ant-modal-body::-webkit-scrollbar {
+  width: 6px;
+  background-color: #d2d0d3;
+}
+
+.ant-modal-body::-webkit-scrollbar-thumb {
+  background-color: #aaaaa8;
+  border-radius: 5px;
+}
+
+// 模态框间距
+.ant-modal-body {
+  padding: 20px !important;
+}
+
+// 表单样式 form~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//全局必填表单红色标记
+.ant-form-item-label {
+  width: 140px !important;
+
+  > label.ant-form-item-required::before {
+    color: #ff4d4f !important;
+  }
+}
+
+
+// 污染物 监测数据  详情 抽屉显示
+.DetailBoxview {
+  height: calc(100vh - 125px) !important;
+  top: 55px !important;
+  right: 12px !important;
+  // .ant-drawer-content-wrapper{
+  //   height: calc(100vh - 120px) !important;
+  //   top: 55px !important;
+  //   right: 15px !important;
+  // }
+
+  .ant-drawer-body::-webkit-scrollbar {
+    width: 6px;
+    background-color: #d2d0d3;
+  }
+
+  .ant-drawer-body::-webkit-scrollbar-thumb {
+    background-color: #aaaaa8;
+    border-radius: 5px;
+  }
+}
+
+// 上传组件和  左侧图标的距离
+.ant-upload-list-item-name {
+  padding-left: 24px !important;
+}
+
+.ant-form-item {
+  .ant-form-item-control {
+    overflow: hidden;
+  }
+}
+
+//导航收起按钮
+.ant-pro-sider-links {
+  display: none;
+}
+
+.ant-pro-page-container-children-content {
+  margin: 0 !important;
+}
+
+.ant-picker-disabled,
+.ant-select-disabled,
+.ant-cascader-picker-disabled {
+  cursor: auto !important;
+
+  input,
+  span {
+    cursor: auto !important;
+    color: #000 !important;
+  }
+
+  .ant-select-selector {
+    cursor: auto !important;
+    color: #000 !important;
+    //.ant-select-selection-placeholder {
+    //  color: #b8b2b2 !important;
+    //}
+
+  }
+}
+
+.ant-input[disabled],
+.ant-picker-disabled,
+.ant-input-number-input[disabled] {
+  cursor: auto !important;
+  color: #000 !important;
+}
+
+.ant-input-disabled {
+  cursor: auto !important;
+  color: #000 !important;
+}
+
+.ant-input-number {
+  width: 100% !important;
+}
+
+
+.divTitle {
+  height: 30px;
+  line-height: 30px;
+  font-size: 18px;
+  color: #222222;
+  font-weight: bold;
+}
+
+
+// @font-face {
+//   font-family: "PangMenZhengDaoBiaoTiTi";
+//   src: url("../assets/NowFont/PangMenZhengDaoBiaoTiTi-1.ttf");
+// }
+
+textarea::-webkit-scrollbar {
+  width: 6px;
+  background-color: #d2d0d3;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: #aaaaa8;
+  border-radius: 5px;
+}
+
+//输入框去圆角
+.ant-input,
+.ant-input-number,
+.ant-select-selector,
+.ant-picker,
+.ant-upload-list-item {
+  border-radius: 0 !important;
+}
+
+.ant-input-number-handler-wrap {
+  display: none !important;
+}
+
+input.ant-input-disabled {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: auto !important;
+}
+
+.editable-cell-value-wrap {
+  min-height: 32px;
+  display: -webkit-box;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+
+  .ant-empty-normal {
+    margin: 0 !important;
+
+    .ant-empty-image {
+      display: none;
+    }
+  }
+
+  span {
+    height: 100%;
+  }
+}
+
+.ant-select-selection-item {
+  user-select: text !important;
+}
+
+.ant-input-number-disabled {
+  cursor: auto !important;
+}
+
+.ant-table-column-sorters {
+  padding: 0 !important;
+}
+
+.ant-input-textarea-show-count {
+
+  &::after {
+    position: relative !important;
+    bottom: 0 !important;
+  }
+}
+
+// .FromTables {
+//   table {
+//     // border: 1px @Table_Border_Color solid;
+//     border: none;
+//     // border-right: 0 @Table_Border_Color solid;
+
+//     .ant-table-cell {
+//       color: #D8DADE;
+//     }
+
+//     .ant-table-cell[colspan] {
+//       color: #D8DADE;
+//       border: none !important;
+//     }
+//   }
+
+//   .ant-table-tbody {
+//     .ant-table-content>table {
+//       border: none !important;
+//     }
+
+//     .ant-table-row {
+//       background: #1D2531;
+//       height: 50px;
+
+//       // 表格内容部分
+//       td {
+//         font-size: 14px !important; // 表格 内容部分  文字大小
+//         background: inherit;
+//         border: none !important;
+//       }
+//     }
+
+//     .ant-table-row-level-0:nth-child(odd) {
+//       background: #161823;
+//     }
+
+
+//     .ant-table-placeholder {
+//       td {
+//         // border-top: 1px @Table_Border_Color solid !important;
+//         // border-right: 1px @Table_Border_Color solid !important;
+//       }
+//     }
+//   }
+
+//   .ant-table-thead {
+//     font-size: 14px;
+
+//     tr {
+//       height: 48px;
+
+//       th {
+//         // text-align: left !important;
+//         // border-right: 1px @Table_Border_Color solid !important;
+//         // border-bottom: 1px @Table_Border_Color solid !important;
+//         border: none !important;
+//         background: @Table_head_backColor  !important; // 表格头部 方框背景颜色
+
+//       }
+
+//       .ant-table-cell-fix-right {
+//         // border-left: 1px @Table_Border_Color solid !important;
+//       }
+//     }
+
+//     // 判断只有一行的情况
+//     tr:nth-last-child(1):first-child {
+//       th[colspan] {
+//         // border-bottom: 1px @Table_Border_Color solid !important;
+//       }
+//     }
+
+//     // 判断有两行的情况
+//     tr:nth-last-child(2):first-child {
+//       th[colspan] {
+//         // border-bottom: 1px @Table_Border_Color solid !important;
+//       }
+
+//       .ant-table-cell:not([rowspan]) {
+//         // border-bottom: 1px @Table_Border_Color solid !important;
+//       }
+//     }
+//   }
+
+//   //翻页器上下padding
+//   .ant-pagination {
+//     margin: 10px 0 !important;
+//   }
+
+//   .ant-table-pagination {
+//     .ant-pagination-item {
+//       border: 1px solid #323f53 !important;
+
+//       span {
+//         color: #fff;
+//       }
+//     }
+
+//     .ant-pagination-next,
+//     .ant-pagination-prev {
+
+//       border: 1px solid #323f53 !important;
+
+//       button {
+//         border: none;
+//         color: #fff;
+//       }
+//     }
+
+//     .ant-pagination-disabled {
+//       border: 1px solid #323f53 !important;
+
+//       // background: #333;
+//       span {
+//         color: #333;
+//       }
+
+//     }
+
+//     .ant-pagination-item-active {
+//       border: 1px solid #0084E5 !important;
+
+//     }
+//   }
+// }

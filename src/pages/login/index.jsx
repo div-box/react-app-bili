@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import styles from "./index.module.less";
 import logo from "@/assets/images/logo.png";
 import { Form, Input, Button, Row, Col, message } from "antd";
-import FormItem from "antd/lib/form/FormItem";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { reqLogin } from "@/api";
 import { saveUser } from "@/utils/storageUtils";
