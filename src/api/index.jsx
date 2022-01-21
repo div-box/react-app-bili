@@ -1,4 +1,4 @@
-import { get, post, put, axiosDelete } from "@/utils/request";
+import { get, post } from "@/utils/request";
 import jsonp from "jsonp";
 import { message } from "antd";
 
@@ -8,6 +8,38 @@ export const reqLogin = (data) => {
 
 export const reqAssUser = (data) => {
   return post("/manage/user/add", data);
+};
+//获取分类列表
+export const getProductsTypeList = (data) => {
+  return get("/manage/category/list", data);
+};
+//新增分类列表
+export const addProductsTypeList = (data) => {
+  return post("/manage/category/add", data);
+};
+//修改分类列表
+export const updateProductsTypeList = (data) => {
+  return post("/manage/category/update", data);
+};
+//获取商品列表
+export const getProductsList = (data) => {
+  return get("/manage/product/list", data);
+};
+//添加商品
+export const addProductsList = (data) => {
+  return post("/manage/product/add", data);
+};
+//修改商品
+export const updateProductsList = (data) => {
+  return post("/manage/product/update", data);
+};
+//根据id获取分类信息
+export const reqCategory = (data) => {
+  return get("/manage/category/info", data);
+};
+//改变商品状态
+export const changeStatus = (data) => {
+  return post("/manage/product/updateStatus", data);
 };
 
 export const reqWeather = (city) => {

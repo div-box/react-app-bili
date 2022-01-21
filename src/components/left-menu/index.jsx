@@ -1,19 +1,10 @@
-import React, { Component, Comporent } from "react";
-import { Menu, Button } from "antd";
-import {
-  AppstoreOutlined,
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-  PieChartOutlined,
-  DesktopOutlined,
-  ContainerOutlined,
-  MailOutlined,
-} from "@ant-design/icons";
+import React, { Component } from "react";
+import { Menu } from "antd";
 import { withRouter } from "@/utils";
 import { Link } from "react-router-dom";
 import "./index.less";
 import logo from "@/assets/images/logo.png";
-import routes from "@/router";
+import { routes } from "@/router";
 
 const { SubMenu } = Menu;
 
@@ -45,6 +36,21 @@ class LeftMenu extends Component {
       openKeys: openArr.filter((item) => item),
     });
   }
+  setSelectKeys = (path) => {
+    const openKeys = path
+      .split("/")
+      .filter((item) => item)
+      .map((item) => `/${item}`);
+    const optionArr = [...openKeys];
+    let openArr = [];
+    for (let i = 0; i < openKeys.length; i++) {
+      optionArr.pop();
+      let str = optionArr.join("");
+      openArr.push(str);
+    }
+    openArr.push(path);
+    return openArr;
+  };
   onOpenChange = (keys) => {
     const { openKeys, rootSubmenuKeys } = this.state;
     const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
@@ -60,7 +66,7 @@ class LeftMenu extends Component {
   };
   renderMenu = (menuList) => {
     return menuList.map((item, index) => {
-      if (!item.routes) {
+      if (!item.routes || item.component) {
         return (
           !item.hideInMenu && (
             <Menu.Item key={item.path}>
@@ -94,6 +100,7 @@ class LeftMenu extends Component {
       }
     });
   };
+
   render() {
     const { openKeys } = this.state;
     return (
@@ -113,7 +120,13 @@ class LeftMenu extends Component {
             mode="inline"
             theme="dark"
             className="menuList"
-            defaultSelectedKeys={[this.props.router.location.pathname]}
+            // defaultSelectedKeys={[
+            //   this.props.router.location.pathname,
+            //   ...openKeys,
+            // ]}
+            defaultSelectedKeys={() =>
+              this.setSelectKeys(this.props.router.location.pathname)
+            }
             openKeys={openKeys}
             onOpenChange={this.onOpenChange}
           >

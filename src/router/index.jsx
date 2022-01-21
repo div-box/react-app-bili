@@ -6,7 +6,11 @@ import User from "@/pages/user";
 import Pie from "@/pages/charts/pie";
 import Bar from "@/pages/charts/bar";
 import Line from "@/pages/charts/line";
-const routes = [
+import ProductHome from "@/pages/product/home";
+import ProductEdit from "@/pages/product/edit";
+import ProductDetail from "@/pages/product/detail";
+import NoFoundPage from "./404";
+export const routes = [
   {
     name: "首页",
     path: "/",
@@ -29,6 +33,26 @@ const routes = [
         path: "/pro/product",
         icon: "icon-xitongguanli",
         component: Product,
+        routes: [
+          {
+            name: "商品管理",
+            path: "/pro/product",
+            icon: "icon-xiangmuguanli",
+            component: ProductHome,
+          },
+          {
+            name: "编辑商品",
+            path: "/pro/product/edit",
+            icon: "icon-xiangmuguanli",
+            component: ProductEdit,
+          },
+          {
+            name: "商品详情",
+            path: "/pro/product/detail",
+            icon: "icon-xiangmuguanli",
+            component: ProductDetail,
+          },
+        ],
       },
     ],
   },
@@ -69,6 +93,11 @@ const routes = [
       },
     ],
   },
+  {
+    name: 404,
+    icon: "icon-tongjibaobiao",
+    path: "/*",
+    component: NoFoundPage,
+    hideInMenu: true,
+  },
 ];
-
-export default routes;

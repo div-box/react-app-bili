@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { getUser } from "@/utils/storageUtils";
-import { Switch, Routes, Route, Outlet } from "react-router-dom";
+// import { getUser } from "@/utils/storageUtils";
+import { Outlet } from "react-router-dom";
 import { Layout } from "antd";
-import styles from "./index.module.less";
 import LeftMenu from "@/components/left-menu";
 import Header from "@/components/header";
 
@@ -21,11 +20,11 @@ export default class Home extends Component {
   }
   render() {
     return (
-      <Layout style={{ height: "100%", width: "100%" }}>
-        <Sider>
+      <Layout style={{ minHeight: "100%" }}>
+        <Sider style={{ minHeight: "100vh", overflowY: "auto" }}>
           <LeftMenu />
         </Sider>
-        <Layout>
+        <Layout style={{ overflowY: "auto" }}>
           <Header></Header>
           <Content style={{ background: "#fff", margin: "25px 20px 0" }}>
             <Outlet />

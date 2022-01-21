@@ -1,6 +1,6 @@
 import "./App.less";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import routes from "./router";
+import { routes } from "./router";
 import { withRouter } from "@/utils";
 import Login from "./pages/login";
 import Home from "./pages/home";
@@ -24,7 +24,7 @@ function App() {
     <Router>
       <Routes>
         <Route exact key="/login" path="login" element={<Login />}></Route>
-        <Route key="/" path="/" element={<Home />}>
+        <Route exact key="/" path="/" element={<Home />}>
           {renderRouter(routes)}
         </Route>
         <Route path="/*" element={NoPage}></Route>
