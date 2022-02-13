@@ -83,8 +83,14 @@ export default class ProductEdit extends Component {
             <div>
               商品图片：
               <span>
-                <img src={bg} alt="商品图片" />
-                <img src={bg} alt="商品图片" />
+                {record.imgs?.map((item) => {
+                  return (
+                    <img
+                      src={`http://localhost:5000/upload/${item}`}
+                      alt="商品图片"
+                    />
+                  );
+                })}
               </span>
             </div>
           </Item>
@@ -94,7 +100,7 @@ export default class ProductEdit extends Component {
               <div
                 style={{ display: "inline-block", marginLeft: "15px" }}
                 dangerouslySetInnerHTML={{
-                  __html: '<p style="color:red">鲨大富豪是</p>',
+                  __html: record.detail,
                 }}
               ></div>
             </div>

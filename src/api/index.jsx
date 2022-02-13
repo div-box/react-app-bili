@@ -41,6 +41,39 @@ export const reqCategory = (data) => {
 export const changeStatus = (data) => {
   return post("/manage/product/updateStatus", data);
 };
+//删除服务器图片
+export const deleteImg = (data) => {
+  return post("/manage/img/delete", data);
+};
+//获取角色列表
+export const getRolesList = (data) => {
+  return get("/manage/role/list", data);
+};
+//添加角色
+export const addRole = (data) => {
+  return post("/manage/role/add", data);
+};
+//更新角色
+export const updateRole = (data) => {
+  return post("/manage/role/update", data);
+};
+
+//获取用户列表
+export const getUserList = (data) => {
+  return get("/manage/user/list", data);
+};
+//添加用户
+export const addUser = (data) => {
+  return post("/manage/user/add", data);
+};
+//更新用户
+export const updateUser = (data) => {
+  return post("/manage/user/update", data);
+};
+//删除用户
+export const deleteUser = (data) => {
+  return post("/manage/user/delete", data);
+};
 
 export const reqWeather = (city) => {
   return new Promise((resolve, reject) => {
